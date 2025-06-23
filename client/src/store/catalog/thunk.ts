@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import type { Recipe, RecipeToCreate } from '../types.ts';
 
-const API_BASE_URL = import.meta.env.BASE_API_URL || '/api';
+
+const API_BASE_URL = 'https://recipe-back-1-gvwf.onrender.com/api';
 
 export const fetchRecipes = createAsyncThunk(
     'recipes/fetchAll',
@@ -20,15 +21,29 @@ export const addRecipeToServer = createAsyncThunk(
     'recipes/add',
     async (recipe: RecipeToCreate, { rejectWithValue }) => {
         try {
+
+            if (!recipe.title.trim() || !recipe.ingredients.trim() || recipe.time <= 0) {
+                throw new Error('Заполните все обязательные поля');
+            }
+
             const response = await fetch(`${API_BASE_URL}/recipes`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(recipe)
+                body: JSON.stringify({
+                    ...recipe,
+                    image: recipe.image || null
+                })
             });
-            if (!response.ok) throw new Error('Server error');
-            return await response.json() as Recipe;
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || 'Failed to add recipe');
+            }
+
+            return (await response.json()) as Recipe;
         } catch (err) {
-            return rejectWithValue(err instanceof Error ? err.message : 'Unknown error');
+            const errorMessage = err instanceof Error ? err.message : 'Unknown add error';
+            return rejectWithValue(errorMessage);
         }
     }
 );
