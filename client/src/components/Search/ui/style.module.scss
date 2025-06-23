@@ -1,0 +1,40 @@
+@use '@styles/colors' as colors;
+@use '@styles/media' as media;
+
+
+.search_container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 40px;
+    justify-content: center;
+}
+
+.search_wrapper {
+    padding: 8px 12px;
+    border: 1px solid colors.$light-gray;
+    border-radius: 4px;
+    font-size: 16px;
+    flex-grow: 1;
+    max-width: 300px;
+}
+
+.button_search {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button_search svg {
+    width: 20px;
+    height: 20px;
+    fill: colors.$grey;
+}
+
+.button_search:hover svg {
+    fill: colors.$green;
+}

@@ -1,0 +1,80 @@
+@use '@styles/colors' as colors;
+@use '@styles/media' as media;
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    background: colors.$white;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    border-bottom: colors.$black solid 1px;
+
+    @include media.media-breakpoint-up('minsm') {
+        flex-direction: column;
+        gap: 20px;
+    }
+    @include media.media-breakpoint-up('md') {
+        flex-direction: column;
+        gap: 20px;
+    }
+    @include media.media-breakpoint-up('minxl') {
+        flex-direction: column;
+    }
+    @include media.media-breakpoint-up('mdxl') {
+        gap: 10px;
+    }
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding: 40px;
+
+    @include media.media-breakpoint-up('minsm') {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+    @include media.media-breakpoint-up('md') {
+        flex-direction: column;
+        padding: 10px;
+    }
+    @include media.media-breakpoint-up('minxl') {
+        gap:20px;
+        padding: 20px;
+    }
+    @include media.media-breakpoint-up('mdxl') {
+        gap: 10px;
+        padding: 20px;
+    }
+}
+
+.form_input {
+    height: 30px;
+    width: 300px;
+    font-size: 18px;
+    padding: 0  5px;
+}
+
+.navbar {
+    color : colors.$black;
+    font-size: 18px;
+}
+
+.button_new_recipe {
+    padding: 10px 20px;
+    background-color: colors.$green;
+    color: colors.$white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

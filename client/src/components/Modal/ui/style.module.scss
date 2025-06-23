@@ -1,0 +1,68 @@
+@use '@styles/colors' as colors;
+@use '@styles/media' as media;
+
+
+.modal_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: colors.$black_op_50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal_content {
+  background-color: colors.$white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px colors.$black_op_50;
+  width: 400px;
+  max-width: 90%;
+}
+
+.modal_wrapper {
+  margin-bottom: 20px;
+}
+
+.modal_label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid colors.$light-gray;
+  border-radius: 4px;
+}
+
+input[type="file"]{
+  margin: 20px;
+}
+
+.modal_button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid colors.$green;
+  background-color: colors.$green;
+  color: colors.$white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal_button:hover {
+  background-color: colors.$white;
+  color: colors.$green;
+}
+
+.modal_button:active{
+  background-color: colors.$green;
+  color: colors.$white;
+}

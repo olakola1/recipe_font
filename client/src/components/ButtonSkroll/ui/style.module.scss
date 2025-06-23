@@ -1,0 +1,12 @@
+@use '@styles/colors' as colors;
+
+.scroll_button {
+  border: 1px solid colors.$silvered;
+  border-radius: 4px;
+  height: 40px;
+  width: 150px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
