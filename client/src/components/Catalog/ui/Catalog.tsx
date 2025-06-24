@@ -26,6 +26,16 @@ export const Catalog = () => {
             <div className={style.recipeList}>
                 {recipes.map(recipe => (
                     <div key={recipe.id} className={style.recipeCard}>
+                        {recipe.image &&
+                            <img
+                                className={style.img_card}
+                                src={recipe.image}
+                                alt={recipe.title}
+                                onError={(e) => {
+                                    (e.target as HTMLImageElement).style.display = 'none';
+                                }}
+                            />
+                        }
                         <h3>{recipe.title}</h3>
                         <p>Время приготовления: {recipe.time} мин</p>
                         <button
