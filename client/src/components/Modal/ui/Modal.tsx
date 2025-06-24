@@ -14,6 +14,7 @@ export const RecipeModal = ({ isOpen, onClose, onSave }: ModalIProps) => {
         id: 0,
         title: '',
         ingredients: '',
+        description: '',
         time: 0,
         image: '',
     });
@@ -65,6 +66,7 @@ export const RecipeModal = ({ isOpen, onClose, onSave }: ModalIProps) => {
             id: 0,
             title: '',
             ingredients: '',
+            description: 'string',
             time: 0,
             image: '',
         });
@@ -82,14 +84,21 @@ export const RecipeModal = ({ isOpen, onClose, onSave }: ModalIProps) => {
                         type="text"
                         name="title"
                         value={newRecipe.title}
-                        onChange={handleInputChange} />
+                        onChange={handleInputChange}/>
                 </label>
                 <label className={style.modal_label}>
                     Ингредиенты:
                     <textarea
                         name="ingredients"
                         value={newRecipe.ingredients}
-                        onChange={handleInputChange} />
+                        onChange={handleInputChange}/>
+                </label>
+                <label className={style.modal_label}>
+                    Описание:
+                    <textarea
+                        name="description"
+                        value={newRecipe.description}
+                        onChange={handleInputChange}/>
                 </label>
                 <label className={style.modal_label}>
                     Время приготовления:
@@ -97,14 +106,14 @@ export const RecipeModal = ({ isOpen, onClose, onSave }: ModalIProps) => {
                         type="number"
                         name="time"
                         value={newRecipe.time}
-                        onChange={handleInputChange} />
+                        onChange={handleInputChange}/>
                 </label>
                 <label className={style.modal_label}>
                     Фото:
                     <input
                         type="file"
                         accept="image/*"
-                        onChange={handlePhotoChange} />
+                        onChange={handlePhotoChange}/>
                 </label>
                 <button className={style.modal_button} onClick={handleSave}>Сохранить</button>
                 <button className={style.modal_button} onClick={onClose}>Отмена</button>

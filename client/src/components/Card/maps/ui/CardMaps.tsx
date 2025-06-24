@@ -45,6 +45,7 @@ export const CardMaps: React.FC<CardMapsProps> = ({ recipes }) => {
                         }
                         <h3>{recipe.title}</h3>
                         <p>{recipe.ingredients}</p>
+                        <p>{recipe.description}</p>
                         <p>Время приготовления: {recipe.time} мин</p>
                         <button
                             className={style.button_card}

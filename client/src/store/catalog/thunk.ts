@@ -22,7 +22,7 @@ export const addRecipeToServer = createAsyncThunk(
     async (recipe: RecipeToCreate, { rejectWithValue }) => {
         try {
 
-            if (!recipe.title.trim() || !recipe.ingredients.trim() || recipe.time <= 0) {
+            if (!recipe.title.trim() || !recipe.ingredients.trim() || !recipe.description.trim() || recipe.time <= 0 ) {
                 throw new Error('Заполните все обязательные поля');
             }
 
