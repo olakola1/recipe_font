@@ -4,6 +4,7 @@ import { getRecipe } from "../../../store/catalog/selectorRecipe";
 import style from './style.module.scss';
 import { toggleFavoriteRecipe } from "../../../store/catalog/thunk";
 import { Recipe } from '../../../store/types';
+import { RecipeCard } from '../../RecipeCard';
 
 export const FavoriteRecipes = () => {
     const dispatch = useAppDispatch();
@@ -22,34 +23,23 @@ export const FavoriteRecipes = () => {
             <h2>Любимые рецепты</h2>
 
             {favoriteRecipes.length === 0 ? (
-                <div>
+                <div className={style.empty_message}>
                     <p>У тебя еще нет любимых рецептов</p>
                 </div>
             ) : (
                 <div className={style.catalog_favorite}>
                     {favoriteRecipes.map((recipe) => (
-                        <div key={recipe.id} className={style.catalog_favorite_wrapper}>
-                            {recipe.image && (
-                                <img
-                                    src={recipe.image}
-                                    alt={recipe.title}
-                                    className={style.img_desert}
-                                    onError={(e) => {
-                                        (e.target as HTMLImageElement).style.display = 'none';
-                                    }}
-                                />
-                            )}
-                            <h3>{recipe.title}</h3>
-                            <p>{recipe.ingredients}</p>
-                            <p>{recipe.description}</p>
-                            <p>Время приготовления: {recipe.time} мин</p>
+                        <RecipeCard
+                            key={recipe.id}
+                            recipe={recipe}
+                        >
                             <button
                                 className={style.button_favorite}
                                 onClick={() => handleRemoveFavorite(recipe)}
                             >
                                 Удалить из избранного
                             </button>
-                        </div>
+                        </RecipeCard>
                     ))}
                 </div>
             )}

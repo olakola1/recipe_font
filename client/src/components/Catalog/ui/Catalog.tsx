@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './style.module.scss';
+import { RecipeCard } from '../../RecipeCard';
 import { useAppDispatch, useAppSelector } from '../../../store/store';
 import { deleteRecipeFromServer} from "../../../store/catalog/thunk.ts";
 import { getRecipe, getRecipeLoading, getRecipeError } from "../../../store/catalog/selectorRecipe.ts";
@@ -21,30 +22,18 @@ export const Catalog = () => {
     if (error) return <div className={style.error}>Ошибка: {error}</div>;
 
     return (
-        <div className={style.catalog}>
-            <h2>Мои рецепты</h2>
+        <div className={style.container_catalog}>
+            <h2 className={style.catalog_wrapper}>Мои рецепты</h2>
             <div className={style.recipeList}>
                 {recipes.map(recipe => (
-                    <div key={recipe.id} className={style.recipeCard}>
-                        {recipe.image &&
-                            <img
-                                className={style.img_card}
-                                src={recipe.image}
-                                alt={recipe.title}
-                                onError={(e) => {
-                                    (e.target as HTMLImageElement).style.display = 'none';
-                                }}
-                            />
-                        }
-                        <h3>{recipe.title}</h3>
-                        <p>Время приготовления: {recipe.time} мин</p>
+                    <RecipeCard key={recipe.id} recipe={recipe}>
                         <button
                             onClick={() => handleDelete(recipe.id)}
-                            className={style.deleteButton}
+                            className={style.button_catalog}
                         >
                             Удалить
                         </button>
-                    </div>
+                    </RecipeCard>
                 ))}
             </div>
         </div>
