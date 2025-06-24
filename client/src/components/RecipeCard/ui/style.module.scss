@@ -6,17 +6,17 @@
 .cardWrapper {
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 400px;
   border: 1px solid colors.$green;
   border-radius: 8px;
   font-size: 16px;
   text-align: center;
   position: relative;
-  max-height: 600px;
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
   z-index: 1;
+  background: white;
 
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -29,15 +29,11 @@
     transform: translate(-50%, -50%) scale(1.1);
     z-index: 101;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    max-height: 80vh;
-    width: 340px;
   }
 }
 
 .cardContent {
   flex: 1;
-  padding: 16px;
-  overflow-y: auto;
 }
 
 .img_card {
@@ -51,24 +47,21 @@
 
 .ingredients {
   margin: 8px 0;
+  padding: 16px;
 }
-
 
 .description {
   margin: 12px 0;
-  padding: 12px;
-  border: 1px solid black;
-  border-radius: 4px;
-  background: #f9f9f9;
   text-align: left;
-  max-height: 150px;
   overflow-y: auto;
+  border-bottom: 1px solid colors.$green;
+  border-top: 1px solid colors.$green;
+  padding: 16px;
 }
 
 .time {
   margin-top: 12px;
   font-weight: 500;
-
 }
 
 .overlay {
